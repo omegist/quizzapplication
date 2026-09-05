@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import type { Quiz } from '@/types';
-import { CATEGORY_COLORS, DIFFICULTY_STYLES } from '@/utils/quizStyles';
+import { CATEGORY_COLORS, DIFFICULTY_STYLES } from '@/utils/csQuizStyles';
 import {
   ArrowLeft,
   ArrowRight,
@@ -197,7 +197,7 @@ export function QuizPlayer({ quiz, onExit }: QuizPlayerProps) {
           {catColor.icon}
         </div>
         <div>
-          <h1 className="text-xl font-bold text-slate-900">{quiz.title}</h1>
+          <h1 className="font-display text-2xl font-bold text-slate-900">{quiz.title}</h1>
           <p className="text-sm text-slate-500">{quiz.category}</p>
         </div>
       </div>
@@ -219,7 +219,7 @@ export function QuizPlayer({ quiz, onExit }: QuizPlayerProps) {
       </div>
 
       {/* Question card */}
-      <div className="card p-6 animate-scale-in" key={currentIndex}>
+      <div className="card border-slate-200/80 p-6 shadow-lg shadow-slate-200/40 animate-scale-in" key={currentIndex}>
         <div className="flex items-start gap-3 mb-6">
           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
             <HelpCircle size={18} />

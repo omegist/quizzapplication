@@ -39,20 +39,20 @@ export function AuthScreen({ initialView = 'login' }: { initialView?: AuthView }
               Learn faster.<br />Test smarter.
             </h1>
             <p className="text-lg text-brand-100/80 max-w-md">
-              Explore hundreds of quizzes across every topic. Track your progress, challenge friends, and master new skills.
+              Purpose-built BSc Computer Science practice across programming, databases, networks, and more.
             </p>
             <div className="flex gap-8 pt-4">
               <div>
-                <div className="text-3xl font-bold">500+</div>
-                <div className="text-sm text-brand-200/70">Quizzes</div>
-              </div>
-              <div>
                 <div className="text-3xl font-bold">8</div>
-                <div className="text-sm text-brand-200/70">Categories</div>
+                <div className="text-sm text-brand-200/70">Subjects</div>
               </div>
               <div>
-                <div className="text-3xl font-bold">10k+</div>
-                <div className="text-sm text-brand-200/70">Learners</div>
+                <div className="text-3xl font-bold">80</div>
+                <div className="text-sm text-brand-200/70">Questions</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold">10</div>
+                <div className="text-sm text-brand-200/70">Per quiz</div>
               </div>
             </div>
           </div>

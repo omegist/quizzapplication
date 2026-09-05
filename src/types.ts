@@ -1,14 +1,14 @@
 export type Difficulty = 'Easy' | 'Medium' | 'Hard';
 
 export type Category =
-  | 'General Knowledge'
-  | 'Science'
-  | 'Math'
-  | 'History'
-  | 'Geography'
-  | 'Technology'
-  | 'Sports'
-  | 'Entertainment';
+  | 'Programming Fundamentals'
+  | 'Data Structures'
+  | 'Database Systems'
+  | 'Operating Systems'
+  | 'Computer Networks'
+  | 'Web Development'
+  | 'Software Engineering'
+  | 'Theory of Computation';
 
 export interface Question {
   id: string;
@@ -38,14 +38,14 @@ export interface User {
 }
 
 export const CATEGORIES: Category[] = [
-  'General Knowledge',
-  'Science',
-  'Math',
-  'History',
-  'Geography',
-  'Technology',
-  'Sports',
-  'Entertainment',
+  'Programming Fundamentals',
+  'Data Structures',
+  'Database Systems',
+  'Operating Systems',
+  'Computer Networks',
+  'Web Development',
+  'Software Engineering',
+  'Theory of Computation',
 ];
 
 export const DIFFICULTIES: Difficulty[] = ['Easy', 'Medium', 'Hard'];

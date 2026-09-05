@@ -82,7 +82,8 @@ export function Profile() {
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">Profile</h1>
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-600">Account</p>
+        <h1 className="mt-1 font-display text-3xl font-bold text-slate-900">Your profile</h1>
         <p className="mt-1 text-slate-500">Manage your account information and security settings.</p>
       </div>
 

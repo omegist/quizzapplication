@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,17 +11,17 @@
   }
 
   body {
-    @apply bg-slate-50 text-slate-900 font-sans;
+    @apply bg-[#f7f8fc] text-slate-900 font-sans;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50;
   }
 
   .btn-primary {
-    @apply btn bg-brand-600 text-white px-5 py-2.5 hover:bg-brand-700 active:scale-[0.98] shadow-sm shadow-brand-600/20;
+    @apply btn bg-brand-600 px-5 py-2.5 text-white shadow-lg shadow-brand-600/20 hover:-translate-y-0.5 hover:bg-brand-700 active:translate-y-0;
   }
 
   .btn-secondary {
@@ -37,7 +37,7 @@
   }
 
   .card {
-    @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-sm shadow-slate-200/50;
   }
 }
 

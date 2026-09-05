@@ -1,6 +1,6 @@
-import type { Category, Difficulty } from '@/types';
+import type { Difficulty } from '@/types';
 
-export const CATEGORY_COLORS: Record<Category, { bg: string; text: string; gradient: string; icon: string }> = {
+export const CATEGORY_COLORS: Record<string, { bg: string; text: string; gradient: string; icon: string }> = {
   'General Knowledge': { bg: 'bg-blue-50', text: 'text-blue-700', gradient: 'from-blue-500 to-blue-700', icon: '🌍' },
   Science: { bg: 'bg-emerald-50', text: 'text-emerald-700', gradient: 'from-emerald-500 to-teal-700', icon: '🔬' },
   Math: { bg: 'bg-violet-50', text: 'text-violet-700', gradient: 'from-violet-500 to-purple-700', icon: '📐' },

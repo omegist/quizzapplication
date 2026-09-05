@@ -34,10 +34,10 @@ export function Sidebar({ currentPage, onNavigate }: SidebarProps) {
     <div className="flex h-full flex-col">
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-6 py-6">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600 text-white">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-400 to-violet-500 text-white shadow-lg shadow-brand-950/30">
           <Brain size={24} />
         </div>
-        <span className="text-xl font-bold tracking-tight text-white">Quizly</span>
+        <span className="font-display text-xl font-bold tracking-tight text-white">Quizly</span>
       </div>
 
       {/* Nav */}
@@ -92,7 +92,7 @@ export function Sidebar({ currentPage, onNavigate }: SidebarProps) {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-brand-950">
+      <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-[#101735]">
         {sidebarContent}
       </aside>
 

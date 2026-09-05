@@ -1,5 +1,5 @@
 import type { Quiz } from '@/types';
-import { CATEGORY_COLORS, DIFFICULTY_STYLES } from '@/utils/quizStyles';
+import { CATEGORY_COLORS, DIFFICULTY_STYLES } from '@/utils/csQuizStyles';
 import { Clock, HelpCircle, ArrowRight } from 'lucide-react';
 
 interface QuizCardProps {
@@ -12,9 +12,9 @@ export function QuizCard({ quiz, onStart }: QuizCardProps) {
   const diffStyle = DIFFICULTY_STYLES[quiz.difficulty];
 
   return (
-    <div className="card group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+    <div className="card group overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-300/50">
       {/* Cover */}
-      <div className={`relative h-32 bg-gradient-to-br ${catColor.gradient} overflow-hidden`}>
+      <div className={`relative h-36 bg-gradient-to-br ${catColor.gradient} overflow-hidden`}>
         <div className="absolute inset-0 opacity-20">
           <div className="absolute -top-8 -right-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
           <div className="absolute -bottom-12 -left-8 h-32 w-32 rounded-full bg-black/10 blur-2xl" />
@@ -24,14 +24,14 @@ export function QuizCard({ quiz, onStart }: QuizCardProps) {
             {catColor.icon} {quiz.category}
           </span>
         </div>
-        <div className="absolute bottom-3 right-3 text-4xl opacity-30">
+        <div className="absolute bottom-3 right-3 font-display text-3xl font-bold tracking-tighter opacity-30">
           {catColor.icon}
         </div>
       </div>
 
       {/* Body */}
       <div className="p-5">
-        <h3 className="text-lg font-bold text-slate-900 leading-snug">{quiz.title}</h3>
+        <h3 className="font-display text-xl font-bold text-slate-900 leading-snug">{quiz.title}</h3>
         <p className="mt-1.5 text-sm text-slate-500 line-clamp-2 leading-relaxed">{quiz.description}</p>
 
         <div className="mt-4 flex items-center gap-4 text-xs text-slate-500">
@@ -51,7 +51,7 @@ export function QuizCard({ quiz, onStart }: QuizCardProps) {
 
         <button
           onClick={() => onStart(quiz)}
-          className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 py-2.5 text-sm font-semibold text-slate-700 transition-all duration-200 hover:bg-brand-50 hover:text-brand-700 group-hover:bg-brand-600 group-hover:text-white"
+          className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-brand-600"
         >
           Start Quiz
           <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
