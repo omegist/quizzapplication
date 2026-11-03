@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import type { Quiz } from '@/types';
 import { CATEGORY_COLORS, DIFFICULTY_STYLES } from '@/utils/csQuizStyles';
+import { pickQuestions } from '@/utils/questionRotation';
 import {
   ArrowLeft,
   ArrowRight,
@@ -13,22 +14,32 @@ import {
   ChevronLeft,
 } from 'lucide-react';
 
+// How many questions to show per attempt
+const QUESTIONS_PER_ATTEMPT = 10;
+
 interface QuizPlayerProps {
   quiz: Quiz;
   onExit: () => void;
 }
 
 export function QuizPlayer({ quiz, onExit }: QuizPlayerProps) {
+  /** Pick a fresh non-repeating batch of questions */
+  const pickBatch = useCallback(
+    () => pickQuestions(quiz.id, quiz.questions, QUESTIONS_PER_ATTEMPT),
+    [quiz.id, quiz.questions]
+  );
+
+  const [activeQuestions, setActiveQuestions] = useState(() => pickBatch());
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>(() =>
-    Array(quiz.questions.length).fill(null)
+    Array(QUESTIONS_PER_ATTEMPT).fill(null)
   );
   const [showResults, setShowResults] = useState(false);
 
   const catColor = CATEGORY_COLORS[quiz.category];
   const diffStyle = DIFFICULTY_STYLES[quiz.difficulty];
-  const totalQuestions = quiz.questions.length;
-  const currentQuestion = quiz.questions[currentIndex];
+  const totalQuestions = activeQuestions.length;
+  const currentQuestion = activeQuestions[currentIndex];
   const isLastQuestion = currentIndex === totalQuestions - 1;
   const answeredCount = answers.filter((a) => a !== null).length;
 
@@ -53,17 +64,20 @@ export function QuizPlayer({ quiz, onExit }: QuizPlayerProps) {
   }
 
   function restart() {
-    setAnswers(Array(quiz.questions.length).fill(null));
+    // Pick a NEW non-repeating batch of questions each retry
+    const newBatch = pickBatch();
+    setActiveQuestions(newBatch);
+    setAnswers(Array(newBatch.length).fill(null));
     setCurrentIndex(0);
     setShowResults(false);
   }
 
   const score = useMemo(() => {
     return answers.reduce<number>((acc, answer, i) => {
-      if (answer !== null && answer === quiz.questions[i].correctIndex) return acc + 1;
+      if (answer !== null && answer === activeQuestions[i].correctIndex) return acc + 1;
       return acc;
     }, 0);
-  }, [answers, quiz.questions]);
+  }, [answers, activeQuestions]);
 
   const progress = (answeredCount / totalQuestions) * 100;
 
@@ -116,7 +130,7 @@ export function QuizPlayer({ quiz, onExit }: QuizPlayerProps) {
             {/* Answer review */}
             <div className="mt-8 space-y-3">
               <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wide">Answer Review</h3>
-              {quiz.questions.map((q, i) => {
+              {activeQuestions.map((q, i) => {
                 const userAnswer = answers[i];
                 const correct = userAnswer === q.correctIndex;
                 return (
@@ -270,7 +284,7 @@ export function QuizPlayer({ quiz, onExit }: QuizPlayerProps) {
 
         {/* Question dots */}
         <div className="hidden sm:flex items-center gap-1.5">
-          {quiz.questions.map((_, i) => (
+          {activeQuestions.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrentIndex(i)}
